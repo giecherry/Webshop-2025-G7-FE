@@ -41,6 +41,10 @@ async function handleLogin() {
     if (response.ok) {
       const result = await response.json();
       localStorage.setItem("user", JSON.stringify(result));
+      
+      // Fetch the user's saved cart
+      await fetchUserCart(result.token);
+      
       window.location.href = "index.html";
     } else {
       alert("Fel användarnamn eller lösenord.");
@@ -48,5 +52,28 @@ async function handleLogin() {
   } catch (error) {
     console.error("Inloggningsfel:", error);
     alert("Ett tekniskt fel uppstod vid inloggningen.");
+  }
+}
+
+// Function to fetch user's saved cart
+async function fetchUserCart(token) {
+  try {
+    const response = await fetch(`${getBaseUrl()}api/cart`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const cartData = await response.json();
+      if (cartData && cartData.items) {
+        localStorage.setItem("cart", JSON.stringify(cartData.items));
+        cartBalanceUpdate();
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching user cart:", error);
   }
 }

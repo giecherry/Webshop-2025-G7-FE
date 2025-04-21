@@ -7,20 +7,60 @@ export function getBaseUrl() {
 
 export function updateLoginLink() {
   const user = JSON.parse(localStorage.getItem("user"));
-  const loginLink = document.querySelector(".icon-link[href='login.html']");
+  const loginLink = document.querySelector("a[href='login.html']");
 
   if (user && loginLink) {
-    loginLink.innerHTML = `<i class="fas fa-sign-out-alt"></i> Logga ut`;
+    loginLink.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 32 32">
+        <path d="M6 27v-2s0-5 5-5h10c5 0 5 5 5 5v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        <circle cx="16" cy="10" r="5" stroke="currentColor" stroke-width="2"></circle>
+      </svg>
+      <span>Logga ut</span>
+    `;
     loginLink.href = "#";
 
-    loginLink.addEventListener("click", function (e) {
+    loginLink.addEventListener("click", async function (e) {
       e.preventDefault();
+      
+      // Save the current cart to the server
+      await saveUserCart(user.token);
+      
+      // Log the user out
       localStorage.removeItem("user");
+      
+      // Clear the local cart
+      localStorage.setItem("cart", "[]");
+      cartBalanceUpdate();
+      
+      // Redirect to login page
       window.location.href = "login.html";
     });
   }
 }
 
+// Function to save the user's cart to the server
+async function saveUserCart(token) {
+  try {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    if (cart.length > 0) {
+      const response = await fetch(`${getBaseUrl()}api/cart`, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ items: cart }),
+      });
+      
+      if (!response.ok) {
+        console.error("Failed to save cart to server");
+      }
+    }
+  } catch (error) {
+    console.error("Error saving cart:", error);
+  }
+}
 
 export function cartBalanceUpdate() {
   const storedCart = localStorage.getItem("cart");
@@ -74,4 +114,3 @@ export function cartBalanceUpdate() {
     }
   }
 }
-
