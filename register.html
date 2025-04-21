@@ -89,26 +89,29 @@
   <!-- FORMULÄR FÖR SKAPA KONTO -->
   <div class="container">
     <form action="/registrera" method="post">
-      <h1>Skapa Konto</h1>
+      <div class="register-text">
+        <h1>VÄLKOMMEN!</h1>
+        <p>Skapa ett konto för att optimera din shoppingupplevelse
+        </p>
+      </div>
       <hr>
 
-      <label for="email"><b>Användarnamn</b></label>
+      <label for="email"></label>
       <input type="text" placeholder="Ange ditt användarnamn" name="email" id="email" required>
 
-      <label for="psw"><b>Lösenord</b></label>
+      <label for="psw"></label>
       <input type="password" placeholder="Ange ditt lösenord" name="psw" id="psw" required>
 
-      <label for="psw-repeat"><b>Upprepa Lösenord</b></label>
+      <label for="psw-repeat"></label>
       <input type="password" placeholder="Upprepa ditt lösenord" name="psw-repeat" id="psw-repeat" required>
 
-      <label>
-        <input type="checkbox" name="remember" style="margin-bottom:15px">
-        Genom att skapa ett konto godkänner du våra Användarvillkor
-      </label>
+      
+      <input type="checkbox" name="remember" style="margin-bottom:15px">
+      <label for="vilkor">Genom att skapa ett konto godkänner du våra Användarvillkor</label>
 
       <div class="clearfix">
+        <button type="submit" class="signupbtn">Skapa ett konto!</button>
         <button type="button" class="cancelbtn" id="cancelBtn">Avbryt</button>
-        <button type="submit" class="signupbtn">Registrera</button>
       </div>
     </form>
   </div>
