@@ -376,6 +376,12 @@ header {
 }
 /* === ADD PRODUCT FORM === */
 
+#addProductContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
 #addProduct {
   display: grid;
   width: 100%;
@@ -385,7 +391,7 @@ header {
   padding: 25px;
   margin: auto;
   margin-bottom: 10px;
-  text-align: center;
+  text-align: left;
   justify-items: center;
   background-color: white;
   border-radius: 10px;
@@ -393,7 +399,7 @@ header {
 
 #addProduct .prodInp {
   width: 50%;
-  text-align: center;
+  text-align: left;
   background-color: #f3f3f3;
   border-radius: 5px;
   border: solid 2px transparent;
@@ -418,6 +424,14 @@ header {
   transition: all 0.3s ease;
   box-shadow:  3px 3px 0px #030f24,
              -3px -3px 0px #ffffff;
+}
+
+#addProduct label {
+  font-size: 1.2rem;
+  color: #001e62;
+  font-weight: bold;
+  text-align: left;
+  width: 50%;
 }
 
 

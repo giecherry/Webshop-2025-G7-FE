@@ -187,19 +187,19 @@ async function addProductForm() {
       let form = document.createElement("form")
       form.setAttribute("id", "addProduct");
       form.innerHTML = `
-        <label for="name">Namn på produkt</label>
+        <label for="name">Produktnamn:</label>
         <input type="text" name="name" id="name" class="prodInp" required>
-        <label for="ImgUrl">Bild url</label>
+        <label for="ImgUrl">Bild-URL: </label>
         <input type="text" class="prodInp" id="imageUrl" required>
-        <label for="price">Pris</label>
+        <label for="price">Pris (SEK):</label>
         <input type="number" name="price" id="price" class="prodInp" min="0.01" value="0" step="any" required>
-        <label for="category">Kategori</label>
+        <label for="category">Kategori: </label>
         <select name="category" id="category" class="prodInp">
         <option value=""></option>
         </select>
-        <label for="description">Beskrivning</label>
+        <label for="description">Beskrivning:</label>
         <textarea name="description" id="description" class="prodInp"></textarea>
-        <label for="stock">Lager</label>
+        <label for="stock">Lagerantal:</label>
         <input type="number" name="stock" id="stock" class="prodInp" min="0" value="0">
         <button type="submit">Lägg till</button>
     `
