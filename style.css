@@ -427,6 +427,9 @@ header {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
+  align-items: start; 
+  justify-content: center;
+  max-height: fit-content; 
 }
 
 .product-card {
@@ -437,6 +440,7 @@ header {
   background-color: white;
   border-radius: 10px;
   cursor: pointer;
+  min-height: 370px;
 }
 
 .product-card:hover, .product-card:focus {
@@ -461,6 +465,7 @@ header {
   margin-top: 15px ;
   box-shadow:  3px 3px 0px #030f24,
               -3px -3px 0px #ffffff;
+              
 }
 
 .prod-card-img {
