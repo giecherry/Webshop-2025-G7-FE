@@ -131,15 +131,21 @@ function createAdminProductCard(product) {
     <button class="add-to-cart-btn">Köp</button>
   `;
 
-  element.querySelector(".add-to-cart-btn").addEventListener("click", () => {
+  element.querySelector(".add-to-cart-btn").addEventListener("click", (event) => {
+    event.stopPropagation(); 
     addToCart(product);
   });
-  element.querySelector(".edit-product-btn").addEventListener("click", () => {
+
+  element.querySelector(".edit-product-btn").addEventListener("click", (event) => {
+    event.stopPropagation(); 
     editProduct(product);
   });
-  element.querySelector(".delete-product-btn").addEventListener("click", () => {
+
+  element.querySelector(".delete-product-btn").addEventListener("click", (event) => {
+    event.stopPropagation(); 
     deleteProductHandler(product);
   });
+
 
   element.addEventListener("click", () => {
     window.location.href = `product.html?id=${product._id}`;
@@ -160,7 +166,8 @@ function createProductCard(product) {
     <button class="add-to-cart-btn">Köp</button>
   `;
 
-  element.querySelector(".add-to-cart-btn").addEventListener("click", () => {
+  element.querySelector(".add-to-cart-btn").addEventListener("click", (event) => {
+    event.stopPropagation(); 
     addToCart(product);
   });
 
